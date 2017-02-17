@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSSet<__covariant ObjectType> : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
 
 @property (readonly) NSUInteger count;
-- (nullable ObjectType)member:(ObjectType)object;
-- (NSEnumerator<ObjectType> *)objectEnumerator;
+- (nullable ObjectType)member:(ObjectType)object; //如果包含该对象就返回该对象
+- (NSEnumerator<ObjectType> *)objectEnumerator;//对象枚举器
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithObjects:(const ObjectType _Nonnull [_Nullable])objects count:(NSUInteger)cnt NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -25,14 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSSet<ObjectType> (NSExtendedSet)
 
 @property (readonly, copy) NSArray<ObjectType> *allObjects;
-- (nullable ObjectType)anyObject;
-- (BOOL)containsObject:(ObjectType)anObject;
+- (nullable ObjectType)anyObject; //返回一个对象，如果没有返回nil
+- (BOOL)containsObject:(ObjectType)anObject;//是否包含对象
 @property (readonly, copy) NSString *description;
 - (NSString *)descriptionWithLocale:(nullable id)locale;
-- (BOOL)intersectsSet:(NSSet<ObjectType> *)otherSet;
+- (BOOL)intersectsSet:(NSSet<ObjectType> *)otherSet;//是否有交集
 - (BOOL)isEqualToSet:(NSSet<ObjectType> *)otherSet;
 - (BOOL)isSubsetOfSet:(NSSet<ObjectType> *)otherSet;
-
+//所有对象执行一个方法
 - (void)makeObjectsPerformSelector:(SEL)aSelector NS_SWIFT_UNAVAILABLE("Use enumerateObjectsUsingBlock: or a for loop instead");
 - (void)makeObjectsPerformSelector:(SEL)aSelector withObject:(nullable id)argument NS_SWIFT_UNAVAILABLE("Use enumerateObjectsUsingBlock: or a for loop instead");
 
