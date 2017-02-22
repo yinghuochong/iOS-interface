@@ -51,7 +51,9 @@ typedef double NSTimeInterval;
 @interface NSDate (NSDateCreation)
 
 + (instancetype)date;
+//从现在开始多少秒后的日期
 + (instancetype)dateWithTimeIntervalSinceNow:(NSTimeInterval)secs;
+//从timeIntervalSinceReferenceDate开始多少秒后的日期
 + (instancetype)dateWithTimeIntervalSinceReferenceDate:(NSTimeInterval)ti;
 + (instancetype)dateWithTimeIntervalSince1970:(NSTimeInterval)secs;
 + (instancetype)dateWithTimeInterval:(NSTimeInterval)secsToBeAdded sinceDate:(NSDate *)date;
